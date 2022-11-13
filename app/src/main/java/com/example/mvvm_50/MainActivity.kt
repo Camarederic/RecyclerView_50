@@ -2,8 +2,10 @@ package com.example.mvvm_50
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvm_50.databinding.ActivityMainBinding
+import com.example.mvvm_50.model.User
 import com.example.mvvm_50.model.UsersListener
 import com.example.mvvm_50.model.UsersService
 
@@ -21,7 +23,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        usersAdapter = UsersAdapter()
+        usersAdapter = UsersAdapter(object : UserActionListener {
+            override fun onUserMove(user: User, moveBy: Int) {
+
+            }
+
+            override fun onUserDelete(user: User) {
+
+            }
+
+            override fun onUserDetails(user: User) {
+                Toast.makeText(this@MainActivity, "User: ${user.name}", Toast.LENGTH_LONG).show()
+            }
+
+        })
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = usersAdapter

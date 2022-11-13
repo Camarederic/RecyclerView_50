@@ -22,8 +22,7 @@ class UsersService {
                 name = faker.name().name(),
                 company = faker.company().name(),
                 photo = IMAGES[it % IMAGES.size] // чтобы изображения не повторялись
-            )
-        }.toMutableList()
+            ) }.toMutableList()
     }
 
     fun getUsers(): List<User> {
