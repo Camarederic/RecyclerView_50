@@ -16,14 +16,14 @@ class UsersService {
     init {
         val faker = Faker.instance()
         IMAGES.shuffle() // генерируем список пользователей случайно
-        val generateUsers = (1..100).map {
+        users = (1..100).map {
             User(
                 id = it.toLong(),
                 name = faker.name().name(),
                 company = faker.company().name(),
                 photo = IMAGES[it % IMAGES.size] // чтобы изображения не повторялись
             )
-        }
+        }.toMutableList()
     }
 
     fun getUsers(): List<User> {
