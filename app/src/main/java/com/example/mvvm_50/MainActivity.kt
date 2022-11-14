@@ -25,11 +25,11 @@ class MainActivity : AppCompatActivity() {
 
         usersAdapter = UsersAdapter(object : UserActionListener {
             override fun onUserMove(user: User, moveBy: Int) {
-
+                usersService.moveUser(user, moveBy)
             }
 
             override fun onUserDelete(user: User) {
-
+                usersService.deleteUser(user)
             }
 
             override fun onUserDetails(user: User) {

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MVVM_50</string>
+    <string name="move_up">Move Up</string>
+    <string name="move_down">Move Down</string>
+    <string name="remove">Remove</string>
 </resources>
