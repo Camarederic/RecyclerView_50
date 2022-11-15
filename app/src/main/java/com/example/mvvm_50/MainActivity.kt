@@ -3,6 +3,7 @@ package com.example.mvvm_50
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvm_50.databinding.ActivityMainBinding
 import com.example.mvvm_50.model.User
@@ -36,10 +37,19 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, "User: ${user.name}", Toast.LENGTH_LONG).show()
             }
 
+            override fun onUserFire(user: User) {
+                usersService.fireUser(user)
+            }
+
         })
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = usersAdapter
+
+        val itemAnimator = binding.recyclerView.itemAnimator
+        if (itemAnimator is DefaultItemAnimator){
+            itemAnimator.supportsChangeAnimations = false
+        }
 
         usersService.addListener(usersListener)
     }
